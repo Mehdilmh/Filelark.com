@@ -315,6 +315,102 @@ export function toolContent(tool: Tool): ContentSection[] {
         },
       ];
 
+    case 'video-to-mp3':
+      return [
+        {
+          heading: 'Extract the audio from any video',
+          paragraphs: [
+            'Lectures, interviews, voice memos recorded as video, music in a screen recording — sometimes you only need the sound. This tool strips the video track and saves the audio as a high-quality MP3 that plays everywhere.',
+            'It accepts MP4, WebM, MOV, MKV and AVI files, and the conversion runs entirely in your browser using WebAssembly — your video is never uploaded anywhere, which matters for private recordings and meetings.',
+          ],
+        },
+        {
+          heading: 'How it works (and what to expect)',
+          paragraphs: [
+            'Drop a video above and press Extract. The first use downloads the conversion engine (about 31 MB, cached afterwards), then audio is extracted at roughly real-time speed — a 3-minute video takes on the order of a minute. For very long recordings, trim the video first and extract just the part you need.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'Audio quality',
+          paragraphs: [
+            'The MP3 is encoded at a high variable bitrate (roughly 190 kbps), which is transparent for speech and very good for music. Remember that extraction can never sound better than the source — a video with compressed 96 kbps audio yields an MP3 of that same underlying quality.',
+          ],
+        },
+      ];
+
+    case 'video-to-gif':
+      return [
+        {
+          heading: 'Turn video clips into GIFs',
+          paragraphs: [
+            'GIFs still rule chats, docs, README files and anywhere autoplaying video is awkward. This tool converts a section of any video into an animated GIF with a proper optimized color palette — the two-pass technique that keeps GIFs looking crisp instead of grainy.',
+            'You control the start time, duration, output width and frame rate, which are also your file-size levers: GIFs grow quickly, so short, small and 10–15 fps is usually the sweet spot.',
+          ],
+        },
+        {
+          heading: 'How to make a GIF from a video',
+          paragraphs: [
+            'Drop a video above, choose the section (start time and duration), pick a width and frame rate, and press Convert. The first use downloads the conversion engine (~31 MB, cached afterwards). Everything runs in your browser — nothing is uploaded.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'Keeping GIF sizes sane',
+          paragraphs: [
+            'A 5-second clip at 480 px / 12 fps lands around 2–4 MB. Double the width or frame rate and the size roughly doubles too. If your GIF is for a chat app preview, 320 px at 10 fps looks great at a fraction of the size; for crisp UI demos, 480–640 px at 15 fps is plenty.',
+          ],
+        },
+      ];
+
+    case 'video-compress':
+      return [
+        {
+          heading: 'Make videos small enough to send',
+          paragraphs: [
+            'Phone videos are enormous — a minute of 4K footage can top 400 MB, while WhatsApp caps files at 64 MB and email at 25 MB. This tool re-encodes video with the efficient H.264 codec at a quality level you choose, typically shrinking files by 60–90%.',
+            'Everything runs in your browser via WebAssembly: your videos never touch a server, so private family clips stay private.',
+          ],
+        },
+        {
+          heading: 'How to compress a video',
+          paragraphs: [
+            'Drop a video above, pick a quality preset (Balanced is right for most uses), and press Compress. The first use downloads the conversion engine (~31 MB, cached afterwards). Re-encoding is CPU-intensive and runs at roughly real-time speed — a 2-minute clip takes a couple of minutes — so it is best suited to clips rather than feature films.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'Quality presets explained',
+          paragraphs: [
+            'Light keeps near-original quality with modest savings. Balanced is visually excellent for phones and social sharing at a fraction of the size. Strong prioritises the smallest file — fine for previews and messaging, visibly softer on large screens. If the result is still too big, also reduce the resolution by trimming your video to just the needed section first.',
+          ],
+        },
+      ];
+
+    case 'video-trim':
+      return [
+        {
+          heading: 'Cut the part you actually need',
+          paragraphs: [
+            'A 20-minute recording where the useful part is 40 seconds; a phone clip with fumbling at both ends — trimming is the most common edit there is, and it shouldn’t require installing an editor. Enter a start and end time and get just that section.',
+            'Trimming here is lossless: the video is cut without re-encoding, so it completes in seconds regardless of length and the quality is byte-for-byte identical to the original.',
+          ],
+        },
+        {
+          heading: 'How to trim a video',
+          paragraphs: [
+            'Drop a video above, enter start and end times (in seconds, or mm:ss), and press Trim. The first use downloads the engine (~31 MB, cached afterwards); the cut itself is nearly instant because nothing is re-encoded.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'One technical note',
+          paragraphs: [
+            'Lossless cutting can only start at a keyframe, so the actual start may land up to a couple of seconds before the time you enter (never after — you won’t lose content). For frame-exact cuts, trim slightly wide here, or run the clip through the video compressor afterwards, which re-encodes and snaps the boundaries precisely.',
+          ],
+        },
+      ];
+
     case 'youtube-thumbnail':
       return [
         {
@@ -617,6 +713,82 @@ export function toolFaqs(tool: Tool): Faq[] {
           question: 'Are images in the document included?',
           answer:
             'Yes — images embedded in the .docx are converted to inline data URIs so the HTML is self-contained. For production sites, consider uploading the images to your CMS and swapping the sources, since inline images make the HTML file large.',
+        },
+      ];
+    case 'video-to-mp3':
+      return [
+        {
+          question: 'How do I convert MP4 to MP3?',
+          answer:
+            'Drop your video into the box above and press Extract audio. The MP3 is created in your browser and downloads when done. MP4, WebM, MOV, MKV and AVI inputs are supported.',
+        },
+        ...common,
+        {
+          question: 'Why does the first conversion take a moment to start?',
+          answer:
+            'The conversion engine (ffmpeg compiled to WebAssembly, ~31 MB) downloads on first use and is cached by your browser afterwards. This is what makes fully private, in-browser conversion possible.',
+        },
+        {
+          question: 'What audio quality do I get?',
+          answer:
+            'A high-quality variable-bitrate MP3 (~190 kbps) — transparent for speech and podcasts, very good for music. The output can never exceed the quality of the audio inside your video.',
+        },
+      ];
+    case 'video-to-gif':
+      return [
+        {
+          question: 'How do I turn a video into a GIF?',
+          answer:
+            'Drop your video above, choose the start time, duration, width and frame rate, then press Convert. The GIF is generated in your browser with an optimized color palette and downloads immediately.',
+        },
+        ...common,
+        {
+          question: 'Why is my GIF so large?',
+          answer:
+            'GIF is a 30-year-old format that stores every frame as an indexed image — it is inherently inefficient. Keep clips short (under ~10 s), use 320–480 px width and 10–15 fps for chat-friendly sizes.',
+        },
+        {
+          question: 'What does the frame rate setting do?',
+          answer:
+            'It controls how many frames per second the GIF keeps. 10–15 fps looks smooth for most content at half the size of 25 fps; 5 fps suits slideshows and screen recordings.',
+        },
+      ];
+    case 'video-compress':
+      return [
+        {
+          question: 'How do I compress a video for WhatsApp or email?',
+          answer:
+            'Drop the video above, choose Balanced (or Strong for the smallest file), and press Compress. Typical phone videos shrink by 60–90%, comfortably under WhatsApp’s 64 MB and email’s 25 MB caps.',
+        },
+        ...common,
+        {
+          question: 'How long does compression take?',
+          answer:
+            'Re-encoding runs at roughly real-time speed on a typical laptop — a 2-minute clip takes about 2 minutes. It is CPU work happening on your device, which is the price of complete privacy. For long videos, trim to the needed section first.',
+        },
+        {
+          question: 'Will the quality drop?',
+          answer:
+            'Light and Balanced presets are visually near-identical to the original for phone and social viewing. Strong trades visible sharpness for the smallest possible file. Keep your original — compression is one-way.',
+        },
+      ];
+    case 'video-trim':
+      return [
+        {
+          question: 'How do I cut a section from a video?',
+          answer:
+            'Drop the video above, enter the start and end times (seconds or mm:ss), and press Trim. The cut section downloads as an MP4 almost instantly.',
+        },
+        ...common,
+        {
+          question: 'Does trimming reduce quality?',
+          answer:
+            'No — the video is cut without re-encoding (stream copy), so the output is byte-for-byte the same quality as the original, and even hour-long files trim in seconds.',
+        },
+        {
+          question: 'Why doesn’t the clip start exactly where I asked?',
+          answer:
+            'Lossless cutting must start at a keyframe, so the start can land up to a couple of seconds early (never late). Trim slightly wide, or re-encode with the video compressor for frame-exact boundaries.',
         },
       ];
     case 'youtube-thumbnail':

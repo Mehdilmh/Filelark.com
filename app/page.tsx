@@ -6,7 +6,7 @@ import ToolWidget from '@/components/widgets/ToolWidget';
 import { websiteJsonLd } from '@/lib/content';
 import { CATEGORIES, getTool, toolsByCategory } from '@/lib/tools';
 
-const POPULAR = ['heic-to-jpg', 'jpg-to-png', 'youtube-thumbnail-downloader', 'pdf-to-word', 'pdf-to-jpg', 'merge-pdf', 'compress-image', 'image-to-prompt'];
+const POPULAR = ['heic-to-jpg', 'mp4-to-mp3', 'youtube-thumbnail-downloader', 'video-to-gif', 'pdf-to-word', 'merge-pdf', 'compress-image', 'image-to-prompt'];
 
 export default function HomePage() {
   return (

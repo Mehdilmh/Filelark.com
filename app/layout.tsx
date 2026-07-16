@@ -9,6 +9,7 @@ import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID; // e.g. G-XXXXXXXXXX
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID; // e.g. GTM-XXXXXXX
 const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const ADSENSE_PUBLISHER = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -79,6 +80,15 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+
+        {/* Google AdSense (loads only when NEXT_PUBLIC_ADSENSE_PUBLISHER is set) */}
+        {ADSENSE_PUBLISHER && (
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER}`}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
+        )}
 
         {/* Google Analytics 4 (loads only when NEXT_PUBLIC_GA_ID is set) */}
         {GA_ID && (

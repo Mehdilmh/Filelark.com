@@ -18,6 +18,10 @@ export type ToolKind =
   | 'pdf-to-word'
   | 'docx-to-html'
   | 'youtube-thumbnail'
+  | 'video-to-mp3'
+  | 'video-to-gif'
+  | 'video-compress'
+  | 'video-trim'
   | 'image-to-prompt';
 
 export type ToolCategory =
@@ -25,6 +29,7 @@ export type ToolCategory =
   | 'Image Tools'
   | 'PDF Tools'
   | 'Document Tools'
+  | 'Video Tools'
   | 'Download Tools'
   | 'AI Tools';
 
@@ -217,6 +222,61 @@ const documentTools: Tool[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* Video tools                                                         */
+/* ------------------------------------------------------------------ */
+
+const videoTools: Tool[] = [
+  {
+    slug: 'mp4-to-mp3',
+    kind: 'video-to-mp3',
+    category: 'Video Tools',
+    title: 'MP4 to MP3 Converter — Extract Audio Free, No Upload | FileLark',
+    description:
+      'Extract MP3 audio from MP4, WebM, MOV and other videos for free — processed entirely in your browser, no upload, no watermark, no sign-up.',
+    h1: 'Convert MP4 to MP3 Online — Free, No Upload',
+    subtitle:
+      'Extract the audio track of any video as a high-quality MP3, privately on your device.',
+    short: 'Video → MP3 audio',
+  },
+  {
+    slug: 'video-to-gif',
+    kind: 'video-to-gif',
+    category: 'Video Tools',
+    title: 'Video to GIF Converter — Free, No Upload | FileLark',
+    description:
+      'Turn any video clip into an animated GIF for free. Pick the section, size and frame rate — converted in your browser with no upload or watermark.',
+    h1: 'Convert Video to GIF Online — Free, No Upload',
+    subtitle:
+      'Turn a video clip into a high-quality animated GIF, right on your device.',
+    short: 'Video clip → animated GIF',
+  },
+  {
+    slug: 'compress-video',
+    kind: 'video-compress',
+    category: 'Video Tools',
+    title: 'Compress Video Online — Free, No Upload | FileLark',
+    description:
+      'Shrink MP4, WebM and MOV videos for WhatsApp, email or the web — free, no upload, no watermark. Choose a quality level and compress in your browser.',
+    h1: 'Compress Video Online — Free, No Upload',
+    subtitle:
+      'Re-encode a video at a smaller size for messaging apps, email, or the web — without it leaving your device.',
+    short: 'Shrink video file size',
+  },
+  {
+    slug: 'trim-video',
+    kind: 'video-trim',
+    category: 'Video Tools',
+    title: 'Trim Video Online — Cut Clips Free, No Upload | FileLark',
+    description:
+      'Cut a section out of any video for free — lossless trimming with no re-encoding, no upload and no watermark, processed in your browser.',
+    h1: 'Trim Video Online — Free, No Upload',
+    subtitle:
+      'Cut the exact section you need from a video — losslessly and instantly, on your device.',
+    short: 'Cut a clip from a video',
+  },
+];
+
+/* ------------------------------------------------------------------ */
 /* Download tools                                                      */
 /* ------------------------------------------------------------------ */
 
@@ -288,6 +348,7 @@ export const TOOLS: Tool[] = [
   ...imageTools,
   ...pdfTools,
   ...documentTools,
+  ...videoTools,
   ...downloadTools,
   ...aiTools,
 ];
@@ -305,6 +366,7 @@ export const CATEGORIES: ToolCategory[] = [
   'Image Tools',
   'PDF Tools',
   'Document Tools',
+  'Video Tools',
   'Download Tools',
   'AI Tools',
 ];

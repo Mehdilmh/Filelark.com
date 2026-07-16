@@ -27,6 +27,10 @@ const RotatePdfWidget = dynamic(() => import('./RotatePdfWidget'), { ssr: false,
 const PdfToWordWidget = dynamic(() => import('./PdfToWordWidget'), { ssr: false, loading });
 const DocxToHtmlWidget = dynamic(() => import('./DocxToHtmlWidget'), { ssr: false, loading });
 const YoutubeThumbnailWidget = dynamic(() => import('./YoutubeThumbnailWidget'), { ssr: false, loading });
+const VideoToMp3Widget = dynamic(() => import('./VideoToMp3Widget'), { ssr: false, loading });
+const VideoToGifWidget = dynamic(() => import('./VideoToGifWidget'), { ssr: false, loading });
+const VideoCompressWidget = dynamic(() => import('./VideoCompressWidget'), { ssr: false, loading });
+const VideoTrimWidget = dynamic(() => import('./VideoTrimWidget'), { ssr: false, loading });
 const ImageToPromptWidget = dynamic(() => import('./ImageToPromptWidget'), { ssr: false, loading });
 
 export default function ToolWidget({ tool }: { tool: Tool }) {
@@ -55,6 +59,14 @@ export default function ToolWidget({ tool }: { tool: Tool }) {
       return <DocxToHtmlWidget />;
     case 'youtube-thumbnail':
       return <YoutubeThumbnailWidget />;
+    case 'video-to-mp3':
+      return <VideoToMp3Widget />;
+    case 'video-to-gif':
+      return <VideoToGifWidget />;
+    case 'video-compress':
+      return <VideoCompressWidget />;
+    case 'video-trim':
+      return <VideoTrimWidget />;
     case 'image-to-prompt':
       return <ImageToPromptWidget defaultStyle={tool.promptStyle ?? 'generic'} />;
   }

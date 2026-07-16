@@ -10,6 +10,7 @@ Every image and PDF tool runs **100% client-side** (Canvas API, WebAssembly, pdf
 - **Image tools** — resize (pixels or percent, aspect lock) and compress (target file size with automatic quality search).
 - **PDF tools** — PDF→JPG/PNG, images→PDF, merge, split (ranges or every page), compress (re-render at lower quality), rotate/delete pages with visual thumbnails.
 - **Document tools** — PDF → Word (.docx text extraction, in-browser) and Word → clean HTML (mammoth.js) for publishing articles.
+- **Video tools** — MP4→MP3, video→GIF (palette-optimized), compress video (H.264 presets) and lossless trim, all in-browser via ffmpeg.wasm (single-thread core, self-hosted, ~31 MB lazy-loaded on first use).
 - **Download tools** — YouTube thumbnail downloader: paste any link (watch/youtu.be/Shorts) and grab every available resolution via a whitelisted same-origin proxy (`/api/thumbnail`).
 - **Image to Prompt (AI)** — upload an image, get Midjourney / Stable Diffusion / generic prompts with copy buttons. Rate-limited to 5/day per user (localStorage + in-memory IP limiting).
 - **Format quick-chooser** — every conversion page shows pill links to switch source/target format without searching.
@@ -59,7 +60,11 @@ Any Node host works too: `npm run build && npm start` behind a reverse proxy.
 
 ## AdSense integration
 
-Paste your AdSense snippet inside `components/AdSlot.tsx` (the placeholder `<div>` marks the spot), add the AdSense loader script to `app/layout.tsx`, and set `NEXT_PUBLIC_ADS_ENABLED=true`. Slot dimensions are reserved per position so ads cause no layout shift.
+No code changes needed — set env vars and redeploy:
+
+1. `NEXT_PUBLIC_ADSENSE_PUBLISHER=ca-pub-XXXXXXXXXXXXXXXX` — loads the AdSense script and activates `/ads.txt` automatically.
+2. `NEXT_PUBLIC_ADS_ENABLED=true` — renders the three reserved ad slots (no layout shift).
+3. Optional: create three display ad units in AdSense and set `NEXT_PUBLIC_ADSENSE_SLOT_BELOW_TOOL` / `_MID_CONTENT` / `_SIDEBAR` to their slot IDs so real units render in the reserved spaces. Without slot IDs the spaces show placeholders (and Auto Ads can still fill the page).
 
 ## Notes & limitations
 
