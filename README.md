@@ -9,7 +9,10 @@ Every image and PDF tool runs **100% client-side** (Canvas API, WebAssembly, pdf
 - **Image converters** — 24 statically generated landing pages covering every sensible pair of JPG / PNG / WebP / AVIF / GIF / BMP / HEIC (HEIC decoded via `heic2any`, AVIF encoded via `@jsquash/avif` WASM). Batch conversion, quality slider, ZIP download, before/after sizes.
 - **Image tools** — resize (pixels or percent, aspect lock) and compress (target file size with automatic quality search).
 - **PDF tools** — PDF→JPG/PNG, images→PDF, merge, split (ranges or every page), compress (re-render at lower quality), rotate/delete pages with visual thumbnails.
+- **Document tools** — PDF → Word (.docx text extraction, in-browser) and Word → clean HTML (mammoth.js) for publishing articles.
+- **Download tools** — YouTube thumbnail downloader: paste any link (watch/youtu.be/Shorts) and grab every available resolution via a whitelisted same-origin proxy (`/api/thumbnail`).
 - **Image to Prompt (AI)** — upload an image, get Midjourney / Stable Diffusion / generic prompts with copy buttons. Rate-limited to 5/day per user (localStorage + in-memory IP limiting).
+- **Format quick-chooser** — every conversion page shows pill links to switch source/target format without searching.
 - **SEO architecture** — one server-rendered page per tool with unique title/description/H1, 300–500 words of format-specific content, FAQ section, FAQPage + SoftwareApplication JSON-LD, auto-generated `sitemap.xml` / `robots.txt`, and "People also use…" internal linking.
 - **Ads-ready** — `<AdSlot />` component with reserved dimensions (zero CLS) in three positions, toggled by `NEXT_PUBLIC_ADS_ENABLED`.
 - **UX** — drag-and-drop hero zones, progress bars, dark mode, mobile-first responsive design, trust badges.
@@ -31,6 +34,9 @@ Everything except Image-to-Prompt works with no configuration at all.
 | `ANTHROPIC_API_KEY` | Only for Image-to-Prompt | Server-side key for the Claude vision API. Without it, the AI tool returns a friendly "not configured" message; all converters still work. |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in production | Canonical URL used in metadata, sitemap and robots (default: `https://filelark.com`). |
 | `NEXT_PUBLIC_ADS_ENABLED` | No | `true` renders the ad slots. Leave unset during development. |
+| `NEXT_PUBLIC_GA_ID` | No | Google Analytics 4 measurement ID (`G-…`). Loads gtag.js when set. |
+| `NEXT_PUBLIC_GTM_ID` | No | Google Tag Manager container ID (`GTM-…`). Loads GTM when set. |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | No | Search Console HTML-tag verification value (not needed with DNS verification). |
 
 ## Production build
 

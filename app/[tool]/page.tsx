@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import AdSlot from '@/components/AdSlot';
 import FaqSection from '@/components/Faq';
+import FormatSwitcher from '@/components/FormatSwitcher';
 import PromptShowcase from '@/components/PromptShowcase';
 import RelatedTools from '@/components/RelatedTools';
 import TrustBadges from '@/components/TrustBadges';
@@ -64,6 +65,9 @@ export default function ToolPage({ params }: Params) {
                 {tool.subtitle}
               </p>
             </header>
+
+            {/* Format quick-chooser (conversion pages only) */}
+            <FormatSwitcher tool={tool} />
 
             {/* The working tool */}
             <ToolWidget tool={tool} />

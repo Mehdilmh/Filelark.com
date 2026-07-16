@@ -6,8 +6,8 @@ import ThemeToggle from './ThemeToggle';
 
 const NAV = [
   { href: '/jpg-to-png', label: 'Image Converter' },
-  { href: '/compress-image', label: 'Compress' },
   { href: '/merge-pdf', label: 'PDF Tools' },
+  { href: '/youtube-thumbnail-downloader', label: 'YT Thumbnail' },
   { href: '/image-to-prompt', label: 'Image to Prompt' },
   { href: '/blog', label: 'Blog' },
 ];

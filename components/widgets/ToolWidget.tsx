@@ -24,6 +24,9 @@ const MergePdfWidget = dynamic(() => import('./MergePdfWidget'), { ssr: false, l
 const SplitPdfWidget = dynamic(() => import('./SplitPdfWidget'), { ssr: false, loading });
 const CompressPdfWidget = dynamic(() => import('./CompressPdfWidget'), { ssr: false, loading });
 const RotatePdfWidget = dynamic(() => import('./RotatePdfWidget'), { ssr: false, loading });
+const PdfToWordWidget = dynamic(() => import('./PdfToWordWidget'), { ssr: false, loading });
+const DocxToHtmlWidget = dynamic(() => import('./DocxToHtmlWidget'), { ssr: false, loading });
+const YoutubeThumbnailWidget = dynamic(() => import('./YoutubeThumbnailWidget'), { ssr: false, loading });
 const ImageToPromptWidget = dynamic(() => import('./ImageToPromptWidget'), { ssr: false, loading });
 
 export default function ToolWidget({ tool }: { tool: Tool }) {
@@ -46,6 +49,12 @@ export default function ToolWidget({ tool }: { tool: Tool }) {
       return <CompressPdfWidget />;
     case 'rotate-pdf':
       return <RotatePdfWidget />;
+    case 'pdf-to-word':
+      return <PdfToWordWidget />;
+    case 'docx-to-html':
+      return <DocxToHtmlWidget />;
+    case 'youtube-thumbnail':
+      return <YoutubeThumbnailWidget />;
     case 'image-to-prompt':
       return <ImageToPromptWidget defaultStyle={tool.promptStyle ?? 'generic'} />;
   }

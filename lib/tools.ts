@@ -15,12 +15,17 @@ export type ToolKind =
   | 'split-pdf'
   | 'compress-pdf'
   | 'rotate-pdf'
+  | 'pdf-to-word'
+  | 'docx-to-html'
+  | 'youtube-thumbnail'
   | 'image-to-prompt';
 
 export type ToolCategory =
   | 'Image Converters'
   | 'Image Tools'
   | 'PDF Tools'
+  | 'Document Tools'
+  | 'Download Tools'
   | 'AI Tools';
 
 export interface Tool {
@@ -181,6 +186,56 @@ const pdfTools: Tool[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* Document tools                                                      */
+/* ------------------------------------------------------------------ */
+
+const documentTools: Tool[] = [
+  {
+    slug: 'pdf-to-word',
+    kind: 'pdf-to-word',
+    category: 'Document Tools',
+    title: 'PDF to Word Converter — Free, No Upload | FileLark',
+    description:
+      'Convert PDF to an editable Word (.docx) document for free. Text is extracted right in your browser — no upload, no sign-up, no watermark.',
+    h1: 'Convert PDF to Word Online — Free, No Upload',
+    subtitle:
+      'Extract the text of any PDF into an editable Word document, privately on your device.',
+    short: 'PDF → editable Word (.docx)',
+  },
+  {
+    slug: 'word-to-html',
+    kind: 'docx-to-html',
+    category: 'Document Tools',
+    title: 'Word to HTML Converter — Clean HTML from DOCX | FileLark',
+    description:
+      'Convert a Word document or article to clean HTML for free. Semantic markup ready for blogs and CMSs — generated in your browser, no upload.',
+    h1: 'Convert Word to HTML Online — Free, No Upload',
+    subtitle:
+      'Turn a .docx article into clean, semantic HTML you can paste into any blog or CMS.',
+    short: 'Word article → clean HTML',
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Download tools                                                      */
+/* ------------------------------------------------------------------ */
+
+const downloadTools: Tool[] = [
+  {
+    slug: 'youtube-thumbnail-downloader',
+    kind: 'youtube-thumbnail',
+    category: 'Download Tools',
+    title: 'YouTube Thumbnail Downloader — All Qualities (HD, 4K) | FileLark',
+    description:
+      'Download any YouTube video thumbnail in every available quality — from 120p up to full HD 1280×720. Paste the link, preview all sizes, save with one click.',
+    h1: 'YouTube Thumbnail Downloader — Every Quality, One Click',
+    subtitle:
+      'Paste any YouTube link (video, Shorts, or youtu.be) and download its thumbnail in all available resolutions.',
+    short: 'YouTube thumbnail → all qualities',
+  },
+];
+
+/* ------------------------------------------------------------------ */
 /* AI tools                                                            */
 /* ------------------------------------------------------------------ */
 
@@ -232,6 +287,8 @@ export const TOOLS: Tool[] = [
   ...conversionTools,
   ...imageTools,
   ...pdfTools,
+  ...documentTools,
+  ...downloadTools,
   ...aiTools,
 ];
 
@@ -247,6 +304,8 @@ export const CATEGORIES: ToolCategory[] = [
   'Image Converters',
   'Image Tools',
   'PDF Tools',
+  'Document Tools',
+  'Download Tools',
   'AI Tools',
 ];
 

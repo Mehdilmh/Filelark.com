@@ -267,6 +267,77 @@ export function toolContent(tool: Tool): ContentSection[] {
         },
       ];
 
+    case 'pdf-to-word':
+      return [
+        {
+          heading: 'Get editable text out of any PDF',
+          paragraphs: [
+            'PDFs are designed to look identical everywhere — which also makes them frustrating to edit. This tool extracts the text of every page and rebuilds it as a Word (.docx) document you can open in Microsoft Word, Google Docs, or LibreOffice and edit freely.',
+            'It works best on text-based PDFs: reports, contracts, essays, ebooks. The text itself is preserved faithfully, page by page.',
+          ],
+        },
+        {
+          heading: 'What to expect (an honest note)',
+          paragraphs: [
+            'This converter focuses on the text, not pixel-perfect layout: complex multi-column layouts, embedded images, and intricate tables are simplified to flowing paragraphs. For most editing jobs — reusing wording, updating a contract, quoting a report — that is exactly what you want. Scanned PDFs (photos of paper) contain no text layer, so they need OCR, which this tool does not perform.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'How to convert PDF to Word',
+          paragraphs: [
+            'Drop a PDF into the box above and press Convert. The text is extracted page by page in your browser and packaged as a .docx file that downloads instantly. Combine it with the Split PDF tool first if you only need a few pages of a long document.',
+          ],
+        },
+      ];
+
+    case 'docx-to-html':
+      return [
+        {
+          heading: 'Turn articles into clean HTML',
+          paragraphs: [
+            'Writers draft in Word or Google Docs, but the web wants HTML — and pasting straight from Word into a CMS produces a notorious mess of inline styles and <span> soup. This tool converts a .docx file into clean, semantic HTML: headings become <h2>/<h3>, bold and italics become <strong> and <em>, lists become real <ul>/<ol>, and links survive intact.',
+            'Writing in Google Docs? Use File → Download → Microsoft Word (.docx), then drop that file here.',
+          ],
+        },
+        {
+          heading: 'Why clean HTML matters for SEO',
+          paragraphs: [
+            'Search engines read structure, not appearance. Proper heading tags describe your content hierarchy, semantic emphasis carries meaning, and lean markup keeps pages fast. The HTML this tool produces is ready to paste into WordPress, Ghost, Webflow, Shopify blogs, or any hand-built site — with nothing to clean up.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'How it works',
+          paragraphs: [
+            'Drop a .docx file above. You get a live preview of the converted article, the raw HTML with a one-click copy button, and a downloadable .html file. Images embedded in the document are included inline so nothing goes missing.',
+          ],
+        },
+      ];
+
+    case 'youtube-thumbnail':
+      return [
+        {
+          heading: 'Every thumbnail quality, from one link',
+          paragraphs: [
+            'Every YouTube video stores its thumbnail at several fixed resolutions — from a tiny 120×90 preview up to the full 1280×720 HD image (present on most modern uploads). This tool takes any YouTube link — a normal watch URL, a youtu.be short link, or a Shorts link — finds the video ID, and shows you every available quality side by side so you can download exactly the size you need.',
+          ],
+        },
+        {
+          heading: 'What are thumbnail downloads used for?',
+          paragraphs: [
+            'Creators grab their own thumbnails for channel art, community posts, and A/B testing archives. Editors and journalists use them as video stills in articles and presentations. Designers study successful thumbnails for reference. Remember that thumbnails are the property of the video creator — download your own freely, and get permission before reusing someone else&apos;s work commercially.',
+          ],
+        },
+        {
+          heading: 'How to download a YouTube thumbnail',
+          paragraphs: [
+            'Paste the video link in the box above. Previews of every available resolution appear instantly — press Download on the one you want and the image saves as a JPG. If the HD (1280×720) version is missing, the video was uploaded without one; the next size down is always available.',
+            'No software, no browser extension, and no YouTube login needed — and it works for Shorts too.',
+          ],
+        },
+      ];
+
     case 'image-to-prompt': {
       const styleNote =
         tool.promptStyle === 'midjourney'
@@ -508,6 +579,72 @@ export function toolFaqs(tool: Tool): Faq[] {
           question: 'Does rotating reduce quality?',
           answer:
             'No. Rotation is stored as lossless PDF page metadata — the page content itself is untouched, and text remains selectable.',
+        },
+      ];
+    case 'pdf-to-word':
+      return [
+        {
+          question: 'How do I convert a PDF to Word?',
+          answer:
+            'Drop your PDF into the box above and press Convert. The text is extracted in your browser and downloads as a .docx file you can edit in Word, Google Docs, or LibreOffice.',
+        },
+        ...common,
+        {
+          question: 'Does it keep the original layout?',
+          answer:
+            'The text is preserved page by page, but complex layouts (multi-column pages, embedded images, intricate tables) are simplified into flowing paragraphs. It is built for editing and reusing the text, not for pixel-perfect reproduction.',
+        },
+        {
+          question: 'Does it work on scanned PDFs?',
+          answer:
+            'No — scanned documents are photographs of paper with no text layer, so they need OCR (optical character recognition), which this tool does not perform. It works on any PDF where you can select the text in a viewer.',
+        },
+      ];
+    case 'docx-to-html':
+      return [
+        {
+          question: 'How do I convert a Word document to HTML?',
+          answer:
+            'Drop a .docx file above. You instantly get a preview, the clean HTML with a copy button, and a downloadable .html file. From Google Docs, first use File → Download → Microsoft Word (.docx).',
+        },
+        ...common,
+        {
+          question: 'Why not just paste from Word into my CMS?',
+          answer:
+            'Pasting from Word carries over hundreds of proprietary inline styles that bloat your page and fight your site’s design. This tool produces semantic tags only — h2, p, strong, em, ul, a — which is what CMSs and search engines actually want.',
+        },
+        {
+          question: 'Are images in the document included?',
+          answer:
+            'Yes — images embedded in the .docx are converted to inline data URIs so the HTML is self-contained. For production sites, consider uploading the images to your CMS and swapping the sources, since inline images make the HTML file large.',
+        },
+      ];
+    case 'youtube-thumbnail':
+      return [
+        {
+          question: 'How do I download a YouTube thumbnail?',
+          answer:
+            'Paste any YouTube link (youtube.com/watch, youtu.be, or Shorts) into the box above. All available thumbnail resolutions appear as previews — click Download under the one you want.',
+        },
+        {
+          question: 'What resolutions are available?',
+          answer:
+            'Up to five: 1280×720 (HD, most modern videos), 640×480, 480×360 (always available), 320×180, and 120×90. If the HD version is missing, the video simply was not uploaded with one.',
+        },
+        {
+          question: 'Is this free? Do I need to log in?',
+          answer:
+            'Completely free, no login, no software. The thumbnail is fetched directly from YouTube’s public image servers and saved as a JPG.',
+        },
+        {
+          question: 'Does it work for YouTube Shorts?',
+          answer:
+            'Yes — paste the Shorts link and the thumbnail is found the same way. Live streams and regular videos work too.',
+        },
+        {
+          question: 'Can I use downloaded thumbnails anywhere?',
+          answer:
+            'Thumbnails belong to the video’s creator. Downloading your own is always fine; for anyone else’s, get permission before commercial reuse — quoting for commentary, news, or research is generally accepted practice.',
         },
       ];
     case 'image-to-prompt':

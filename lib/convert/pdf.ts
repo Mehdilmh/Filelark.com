@@ -359,3 +359,74 @@ export async function rotateDeletePdf(
 export function pdfOutputName(file: File, suffix: string): string {
   return replaceExtension(file.name, '').replace(/\.$/, '') + `-${suffix}.pdf`;
 }
+
+/* ------------------------------------------------------------------ */
+/* PDF → Word (.docx) — text extraction                                */
+/* ------------------------------------------------------------------ */
+
+export async function pdfToWord(
+  file: File,
+  onProgress?: (done: number, total: number) => void,
+): Promise<{ blob: Blob; name: string; hadText: boolean }> {
+  const doc = await openWithPdfjs(file);
+  const pages: string[][] = [];
+  let hadText = false;
+
+  try {
+    for (let i = 1; i <= doc.numPages; i++) {
+      const page = await doc.getPage(i);
+      const content = await page.getTextContent();
+
+      // Group text items into visual lines by their y coordinate
+      const lines: { y: number; parts: { x: number; str: string }[] }[] = [];
+      for (const item of content.items) {
+        if (!('str' in item) || !item.str) continue;
+        const y = item.transform[5];
+        const x = item.transform[4];
+        const line = lines.find((l) => Math.abs(l.y - y) <= 2);
+        if (line) line.parts.push({ x, str: item.str });
+        else lines.push({ y, parts: [{ x, str: item.str }] });
+      }
+      lines.sort((a, b) => b.y - a.y);
+      const texts = lines
+        .map((l) =>
+          l.parts
+            .sort((a, b) => a.x - b.x)
+            .map((p) => p.str)
+            .join(' ')
+            .replace(/\s+/g, ' ')
+            .trim(),
+        )
+        .filter(Boolean);
+      if (texts.length > 0) hadText = true;
+      pages.push(texts);
+      onProgress?.(i, doc.numPages);
+      page.cleanup();
+    }
+  } finally {
+    await doc.destroy();
+  }
+
+  if (!hadText) {
+    throw new ConversionError(
+      `No selectable text found in "${file.name}". Scanned PDFs need OCR, which this tool does not perform.`,
+    );
+  }
+
+  const { Document, Packer, Paragraph } = await import('docx');
+  const children: InstanceType<typeof Paragraph>[] = [];
+  pages.forEach((texts, pageIndex) => {
+    texts.forEach((text, lineIndex) => {
+      children.push(
+        new Paragraph({
+          text,
+          pageBreakBefore: pageIndex > 0 && lineIndex === 0,
+        }),
+      );
+    });
+  });
+
+  const wordDoc = new Document({ sections: [{ children }] });
+  const blob = await Packer.toBlob(wordDoc);
+  return { blob, name: replaceExtension(file.name, 'docx'), hadText };
+}

@@ -6,7 +6,7 @@ import ToolWidget from '@/components/widgets/ToolWidget';
 import { websiteJsonLd } from '@/lib/content';
 import { CATEGORIES, getTool, toolsByCategory } from '@/lib/tools';
 
-const POPULAR = ['heic-to-jpg', 'jpg-to-png', 'png-to-webp', 'webp-to-png', 'pdf-to-jpg', 'merge-pdf', 'compress-image', 'image-to-prompt'];
+const POPULAR = ['heic-to-jpg', 'jpg-to-png', 'youtube-thumbnail-downloader', 'pdf-to-word', 'pdf-to-jpg', 'merge-pdf', 'compress-image', 'image-to-prompt'];
 
 export default function HomePage() {
   return (
@@ -80,9 +80,7 @@ export default function HomePage() {
           <h2 className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Popular tools</h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {POPULAR.map((slug) => {
-              const tool = toolsByCategory('Image Converters')
-                .concat(toolsByCategory('Image Tools'), toolsByCategory('PDF Tools'), toolsByCategory('AI Tools'))
-                .find((t) => t.slug === slug);
+              const tool = getTool(slug);
               return tool ? <ToolCard key={slug} tool={tool} /> : null;
             })}
           </div>
