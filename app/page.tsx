@@ -65,7 +65,7 @@ export default function HomePage() {
             Traditional online converters upload your files to a server, process them
             remotely, and send back the result. That means waiting in queues, hitting
             arbitrary size limits, and — most importantly — trusting a stranger&apos;s server
-            with your photos and documents. ConvertKitPro works differently: every
+            with your photos and documents. FileLark works differently: every
             conversion runs locally in your browser using the Canvas API and WebAssembly.
             Nothing is uploaded, ever.
           </p>

@@ -1,4 +1,4 @@
-# ConvertKitPro
+# FileLark
 
 Free, SEO-first file conversion SaaS built with **Next.js 14 (App Router)**, **TypeScript**, and **Tailwind CSS**.
 
@@ -29,7 +29,7 @@ Everything except Image-to-Prompt works with no configuration at all.
 | Variable | Required | Purpose |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | Only for Image-to-Prompt | Server-side key for the Claude vision API. Without it, the AI tool returns a friendly "not configured" message; all converters still work. |
-| `NEXT_PUBLIC_SITE_URL` | Recommended in production | Canonical URL used in metadata, sitemap and robots (default: `https://convertkitpro.com`). |
+| `NEXT_PUBLIC_SITE_URL` | Recommended in production | Canonical URL used in metadata, sitemap and robots (default: `https://filelark.com`). |
 | `NEXT_PUBLIC_ADS_ENABLED` | No | `true` renders the ad slots. Leave unset during development. |
 
 ## Production build

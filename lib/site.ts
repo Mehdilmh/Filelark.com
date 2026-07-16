@@ -1,7 +1,7 @@
-export const SITE_NAME = 'ConvertKitPro';
+export const SITE_NAME = 'FileLark';
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://convertkitpro.com'
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://filelark.com'
 ).replace(/\/$/, '');
 
 export const SITE_TAGLINE =
@@ -10,4 +10,4 @@ export const SITE_TAGLINE =
 /** Master switch for every <AdSlot />. Toggle via NEXT_PUBLIC_ADS_ENABLED=true */
 export const ADS_ENABLED = process.env.NEXT_PUBLIC_ADS_ENABLED === 'true';
 
-export const CONTACT_EMAIL = 'hello@convertkitpro.com';
+export const CONTACT_EMAIL = 'hello@filelark.com';

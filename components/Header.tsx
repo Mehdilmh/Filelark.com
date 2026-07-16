@@ -20,9 +20,9 @@ export default function Header() {
       <div className="mx-auto flex h-14 max-w-content items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
           <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600 text-sm font-black text-white">
-            C
+            F
           </span>
-          ConvertKitPro
+          FileLark
         </Link>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300 md:flex">
