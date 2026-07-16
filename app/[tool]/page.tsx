@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import AdSlot from '@/components/AdSlot';
 import FaqSection from '@/components/Faq';
+import PromptShowcase from '@/components/PromptShowcase';
 import RelatedTools from '@/components/RelatedTools';
 import TrustBadges from '@/components/TrustBadges';
 import ToolWidget from '@/components/widgets/ToolWidget';
@@ -67,6 +68,15 @@ export default function ToolPage({ params }: Params) {
             {/* The working tool */}
             <ToolWidget tool={tool} />
             <TrustBadges serverSide={tool.kind === 'image-to-prompt'} />
+
+            {tool.kind === 'image-to-prompt' && (
+              <div className="mt-10">
+                <h2 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                  Example prompts generated with FileLark
+                </h2>
+                <PromptShowcase />
+              </div>
+            )}
 
             <AdSlot position="below-tool" />
 

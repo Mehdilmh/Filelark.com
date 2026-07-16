@@ -26,6 +26,16 @@ const config: Config = {
       maxWidth: {
         content: '72rem',
       },
+      keyframes: {
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        'marquee-slow': 'marquee 70s linear infinite',
+        'marquee-fast': 'marquee 55s linear infinite',
+      },
     },
   },
   plugins: [],

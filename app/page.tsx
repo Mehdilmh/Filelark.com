@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import PromptShowcase from '@/components/PromptShowcase';
 import ToolCard from '@/components/ToolCard';
+import TrustBadges from '@/components/TrustBadges';
+import ToolWidget from '@/components/widgets/ToolWidget';
 import { websiteJsonLd } from '@/lib/content';
-import { CATEGORIES, toolsByCategory } from '@/lib/tools';
+import { CATEGORIES, getTool, toolsByCategory } from '@/lib/tools';
 
 const POPULAR = ['heic-to-jpg', 'jpg-to-png', 'png-to-webp', 'webp-to-png', 'pdf-to-jpg', 'merge-pdf', 'compress-image', 'image-to-prompt'];
 
@@ -28,6 +31,45 @@ export default function HomePage() {
             <span>⚡ Instant results</span>
             <span>🆓 Free forever</span>
             <span>🚫 No sign-up</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Image to Prompt — try it right here */}
+      <section className="border-b border-slate-200 dark:border-slate-800">
+        <div className="mx-auto max-w-content px-4 py-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-block rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-700 dark:bg-brand-900/50 dark:text-brand-300">
+              ✨ Featured tool
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              Turn Any Image into an AI Prompt
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-slate-600 dark:text-slate-400">
+              Drop an image below and get ready-to-use Midjourney, Stable Diffusion
+              and detailed prompts in seconds — 5 free generations every day.
+            </p>
+          </div>
+          <div className="mx-auto mt-8 max-w-3xl">
+            <ToolWidget tool={getTool('image-to-prompt')!} />
+            <TrustBadges serverSide />
+            <p className="mt-3 text-center text-sm text-slate-500 dark:text-slate-400">
+              Want Midjourney-only or Stable-Diffusion-only output?{' '}
+              <Link href="/image-to-midjourney-prompt" className="text-brand-600 underline dark:text-brand-400">
+                Midjourney generator
+              </Link>{' '}
+              ·{' '}
+              <Link href="/image-to-stable-diffusion-prompt" className="text-brand-600 underline dark:text-brand-400">
+                Stable Diffusion generator
+              </Link>
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              Example prompts generated with FileLark
+            </h3>
+            <PromptShowcase />
           </div>
         </div>
       </section>
