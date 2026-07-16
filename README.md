@@ -31,7 +31,10 @@ Everything except Image-to-Prompt works with no configuration at all.
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | Only for Image-to-Prompt | Server-side key for the Claude vision API. Without it, the AI tool returns a friendly "not configured" message; all converters still work. |
+| `ANTHROPIC_API_KEY` | One AI key needed for Image-to-Prompt | Claude vision (primary provider). |
+| `OPENAI_API_KEY` | Optional | OpenAI vision (`gpt-4o-mini`) — automatic fallback if Claude fails. |
+| `GEMINI_API_KEY` | Optional | Google Gemini vision (`gemini-2.0-flash`) — final fallback. |
+| `ANTHROPIC_VISION_MODEL` / `OPENAI_VISION_MODEL` / `GEMINI_VISION_MODEL` | Optional | Override the default model per provider. |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in production | Canonical URL used in metadata, sitemap and robots (default: `https://filelark.com`). |
 | `NEXT_PUBLIC_ADS_ENABLED` | No | `true` renders the ad slots. Leave unset during development. |
 | `NEXT_PUBLIC_GA_ID` | No | Google Analytics 4 measurement ID (`G-…`). Loads gtag.js when set. |
