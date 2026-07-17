@@ -9,6 +9,7 @@ const NAV = [
   { href: '/merge-pdf', label: 'PDF Tools' },
   { href: '/youtube-thumbnail-downloader', label: 'YT Thumbnail' },
   { href: '/image-to-prompt', label: 'Image to Prompt' },
+  { href: '/remove-background', label: 'Remove Background' },
   { href: '/blog', label: 'Blog' },
 ];
 
