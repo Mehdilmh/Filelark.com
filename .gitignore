@@ -34,3 +34,8 @@ yarn-error.log*
 .vercel
 
 .vercel
+
+# pdf.js worker is copied in by scripts/copy-pdf-worker.mjs
+/public/pdf.worker.min.mjs
+/public/ffmpeg/
+/public/ort/
