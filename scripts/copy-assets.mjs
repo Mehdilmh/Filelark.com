@@ -32,4 +32,17 @@ for (const f of ['worker.js', 'const.js', 'errors.js']) {
   copyFileSync(join(ffmpegLibEsm, f), join('public', 'ffmpeg', f));
 }
 
+// onnxruntime-web WASM runtime (for background removal). Self-hosted and
+// loaded at runtime with a webpack-ignored dynamic import — bundling ort
+// breaks Next's minifier. The u2netp model is committed at public/models/.
+mkdirSync('public/ort', { recursive: true });
+const ortDist = join('node_modules', 'onnxruntime-web', 'dist');
+for (const f of [
+  'ort.wasm.min.mjs', // wasm-only ESM entry, imported at runtime
+  'ort-wasm-simd-threaded.mjs',
+  'ort-wasm-simd-threaded.wasm',
+]) {
+  copyFileSync(join(ortDist, f), join('public', 'ort', f));
+}
+
 console.log('Copied pdf.js worker and ffmpeg.wasm assets → public/');

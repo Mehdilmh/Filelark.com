@@ -267,6 +267,30 @@ export function toolContent(tool: Tool): ContentSection[] {
         },
       ];
 
+    case 'bg-remove':
+      return [
+        {
+          heading: 'AI background removal — without uploading your photo',
+          paragraphs: [
+            'Every other background remover sends your image to a server for processing. This one runs the AI model (U²-Net, a widely used salient-object segmentation network) directly in your browser via WebAssembly — your photo never leaves your device, which matters when it is a photo of you, your family, or an unreleased product.',
+            'The result is a PNG with a transparent background, ready for product listings, profile pictures, presentations, thumbnails, and design work. A one-click white-background JPG is also available for marketplaces that require it.',
+          ],
+        },
+        {
+          heading: 'How to remove a background',
+          paragraphs: [
+            'Drop an image above. The first use downloads the AI model (about 4.5 MB, cached afterwards), analysis takes a couple of seconds, and you get a live preview over a checkerboard so you can inspect the cutout before downloading.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'What to expect (an honest note)',
+          paragraphs: [
+            'On-device AI has real limits: clear subjects — people, products, animals, vehicles — cut out well, while very busy scenes and fine details like wispy hair or fur edges are harder and may need touch-up. Cloud services with far larger models still win on those edge cases. For most everyday cutouts, this tool gets you there in two seconds without surrendering your photo.',
+          ],
+        },
+      ];
+
     case 'pdf-to-word':
       return [
         {
@@ -677,6 +701,31 @@ export function toolFaqs(tool: Tool): Faq[] {
             'No. Rotation is stored as lossless PDF page metadata — the page content itself is untouched, and text remains selectable.',
         },
       ];
+    case 'bg-remove':
+      return [
+        {
+          question: 'How do I remove the background from an image?',
+          answer:
+            'Drop your image into the box above. The AI analyses it on your device in a couple of seconds and shows a preview with the background removed — download it as a transparent PNG or a white-background JPG.',
+        },
+        ...common,
+        {
+          question: 'Is this really AI? How does it work offline?',
+          answer:
+            'Yes — it runs U²-Net, a neural network for salient-object segmentation, compiled to WebAssembly. The ~4.5 MB model downloads once, is cached by your browser, and then works even with a poor connection.',
+        },
+        {
+          question: 'What images work best?',
+          answer:
+            'Photos with a clear subject: people, products, pets, cars, food. Very cluttered scenes and fine details like flyaway hair are genuinely hard for on-device models — inspect the preview, and for tricky edges consider a touch-up in an editor.',
+        },
+        {
+          question: 'What resolution is the output?',
+          answer:
+            'The same resolution as your original — the AI computes the cutout mask and applies it to your full-size image, so nothing is downscaled.',
+        },
+      ];
+
     case 'pdf-to-word':
       return [
         {

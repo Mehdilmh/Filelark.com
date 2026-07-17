@@ -9,6 +9,7 @@ export type ToolKind =
   | 'image-convert'
   | 'image-resize'
   | 'image-compress'
+  | 'bg-remove'
   | 'pdf-to-images'
   | 'images-to-pdf'
   | 'merge-pdf'
@@ -108,6 +109,18 @@ const imageTools: Tool[] = [
     subtitle:
       'Scale images to exact pixel dimensions or by percentage. Batch-friendly and completely private.',
     short: 'Resize by pixels or percentage',
+  },
+  {
+    slug: 'remove-background',
+    kind: 'bg-remove',
+    category: 'Image Tools',
+    title: 'Remove Background from Image — Free AI, No Upload | FileLark',
+    description:
+      'Remove the background from any image for free with on-device AI. Transparent PNG or white-background JPG output — your photo never leaves your browser.',
+    h1: 'Remove Background from Image — Free, No Upload',
+    subtitle:
+      'AI background removal that runs entirely on your device — get a transparent PNG in seconds.',
+    short: 'AI background remover',
   },
 ];
 

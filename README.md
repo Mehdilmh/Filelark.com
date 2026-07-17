@@ -7,7 +7,7 @@ Every image and PDF tool runs **100% client-side** (Canvas API, WebAssembly, pdf
 ## Features
 
 - **Image converters** — 24 statically generated landing pages covering every sensible pair of JPG / PNG / WebP / AVIF / GIF / BMP / HEIC (HEIC decoded via `heic2any`, AVIF encoded via `@jsquash/avif` WASM). Batch conversion, quality slider, ZIP download, before/after sizes.
-- **Image tools** — resize (pixels or percent, aspect lock) and compress (target file size with automatic quality search).
+- **Image tools** — resize (pixels or percent, aspect lock), compress (target file size with automatic quality search), and AI background removal (U²-Net small via onnxruntime-web WASM, ~4.5 MB model committed at `public/models/`, runtime self-hosted under `/ort/` and loaded with a bundler-ignored dynamic import).
 - **PDF tools** — PDF→JPG/PNG, images→PDF, merge, split (ranges or every page), compress (re-render at lower quality), rotate/delete pages with visual thumbnails.
 - **Document tools** — PDF → Word (.docx text extraction, in-browser) and Word → clean HTML (mammoth.js) for publishing articles.
 - **Video tools** — MP4→MP3, video→GIF (palette-optimized), compress video (H.264 presets) and lossless trim, all in-browser via ffmpeg.wasm (single-thread core, self-hosted, ~31 MB lazy-loaded on first use).
