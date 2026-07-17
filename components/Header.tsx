@@ -19,9 +19,8 @@ export default function Header() {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
       <div className="mx-auto flex h-14 max-w-content items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600 text-sm font-black text-white">
-            F
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="" className="h-7 w-7 rounded-lg" width={28} height={28} />
           FileLark
         </Link>
 
