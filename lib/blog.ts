@@ -14,6 +14,60 @@ export interface BlogPost {
  */
 export const POSTS: BlogPost[] = [
   {
+    slug: 'png-vs-jpg-when-to-use',
+    title: 'PNG vs JPG: Which Format Should You Actually Use?',
+    description:
+      'The two most common image formats explained in plain language — when JPG wins, when PNG is worth the size, and the mistakes that bloat your files.',
+    date: '2026-07-18',
+    readingMinutes: 6,
+    emoji: '🖼️',
+  },
+  {
+    slug: 'convert-video-to-mp3',
+    title: 'How to Convert a Video to MP3 for Free (No Software, No Upload)',
+    description:
+      'Extract the audio from any MP4, WebM or MOV as an MP3 — right in your browser, without installing converters or uploading private recordings.',
+    date: '2026-07-18',
+    readingMinutes: 5,
+    emoji: '🎵',
+  },
+  {
+    slug: 'remove-background-without-photoshop',
+    title: 'How to Remove an Image Background for Free (No Photoshop, No Upload)',
+    description:
+      'You don’t need Photoshop or a paid service for clean cutouts. How AI background removal works, what it’s good at, and how to do it privately.',
+    date: '2026-07-18',
+    readingMinutes: 6,
+    emoji: '✂️',
+  },
+  {
+    slug: 'make-gif-from-video',
+    title: 'How to Make a GIF from a Video (and Keep the File Size Sane)',
+    description:
+      'Turn any video clip into a crisp animated GIF for free — plus the width, frame-rate and length settings that keep GIFs under a few megabytes.',
+    date: '2026-07-17',
+    readingMinutes: 5,
+    emoji: '🎞️',
+  },
+  {
+    slug: 'youtube-thumbnail-size-guide',
+    title: 'YouTube Thumbnail Size Guide: Dimensions, Best Practices & How to Download Any Thumbnail',
+    description:
+      'The exact thumbnail resolution YouTube wants, why maxresdefault sometimes doesn’t exist, and how to download any video’s thumbnail in every quality.',
+    date: '2026-07-17',
+    readingMinutes: 6,
+    emoji: '📺',
+  },
+  {
+    slug: 'pdf-to-word-free',
+    title: 'How to Convert PDF to Word for Free (and When It Won’t Work)',
+    description:
+      'Get editable text out of any PDF without paid software — plus the honest truth about layouts, scanned documents, and OCR.',
+    date: '2026-07-17',
+    readingMinutes: 5,
+    emoji: '📝',
+  },
+  {
     slug: 'heic-to-jpg-iphone-photos',
     title: "HEIC vs JPG: Why Your iPhone Photos Won't Open (and How to Fix It)",
     description:
