@@ -5,8 +5,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from '@/lib/site';
 
-// Google integrations — all optional, enabled by setting the env var.
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID; // e.g. G-XXXXXXXXXX
+// Google integrations. GA measurement IDs are public by design, so the
+// site's ID is committed as the default; the env var can still override it.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-P8CYJF1149';
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID; // e.g. GTM-XXXXXXX
 const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 const ADSENSE_PUBLISHER = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER;
