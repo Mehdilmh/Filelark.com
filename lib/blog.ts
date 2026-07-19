@@ -14,6 +14,51 @@ export interface BlogPost {
  */
 export const POSTS: BlogPost[] = [
   {
+    slug: 'merge-pdf-files-free',
+    title: 'How to Merge PDF Files for Free (in the Right Order, Without Uploading)',
+    description:
+      'Combine contracts, scans and chapters into one PDF — private, lossless, and free. Plus how to reorder pages and fix mixed-up documents.',
+    date: '2026-07-18',
+    readingMinutes: 5,
+    emoji: '🗂️',
+  },
+  {
+    slug: 'compress-video-for-whatsapp-email',
+    title: 'How to Compress a Video for WhatsApp, Email or Discord',
+    description:
+      'WhatsApp caps files at 64 MB, email at 25 MB. Here’s how to shrink phone videos by 60–90% in your browser — and when trimming beats compressing.',
+    date: '2026-07-18',
+    readingMinutes: 5,
+    emoji: '📤',
+  },
+  {
+    slug: 'optimize-images-for-web',
+    title: 'Image Optimization for Faster Websites: A Practical Guide',
+    description:
+      'Oversized images are the #1 cause of slow pages. The format, size and compression rules that cut page weight by 80% — with free browser tools.',
+    date: '2026-07-18',
+    readingMinutes: 7,
+    emoji: '⚡',
+  },
+  {
+    slug: 'word-to-html-clean',
+    title: 'How to Convert Word to Clean HTML (Without the <span> Soup)',
+    description:
+      'Pasting from Word into a CMS creates a mess of inline styles. How to get semantic, SEO-friendly HTML from any .docx or Google Doc — free.',
+    date: '2026-07-18',
+    readingMinutes: 5,
+    emoji: '🧹',
+  },
+  {
+    slug: 'stable-diffusion-prompt-guide',
+    title: 'Stable Diffusion Prompts: A Practical Guide (With Negative Prompts)',
+    description:
+      'How SD prompting differs from Midjourney, how to structure tags and weights, what belongs in a negative prompt — and how to learn from images you love.',
+    date: '2026-07-18',
+    readingMinutes: 7,
+    emoji: '🧪',
+  },
+  {
     slug: 'png-vs-jpg-when-to-use',
     title: 'PNG vs JPG: Which Format Should You Actually Use?',
     description:
