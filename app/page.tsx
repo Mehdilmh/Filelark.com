@@ -1,10 +1,16 @@
 import Link from 'next/link';
+import ArticleCard from '@/components/ArticleCard';
 import PromptShowcase from '@/components/PromptShowcase';
 import ToolCard from '@/components/ToolCard';
 import TrustBadges from '@/components/TrustBadges';
 import ToolWidget from '@/components/widgets/ToolWidget';
+import { POSTS } from '@/lib/blog';
 import { websiteJsonLd } from '@/lib/content';
 import { CATEGORIES, getTool, toolsByCategory } from '@/lib/tools';
+
+const LATEST_POSTS = [...POSTS]
+  .sort((a, b) => b.date.localeCompare(a.date))
+  .slice(0, 6);
 
 const POPULAR = ['remove-background', 'heic-to-jpg', 'mp4-to-mp3', 'youtube-thumbnail-downloader', 'video-to-gif', 'pdf-to-word', 'compress-image', 'image-to-prompt'];
 
@@ -97,6 +103,36 @@ export default function HomePage() {
             </div>
           </section>
         ))}
+
+        {/* From the blog — article intros with read-more buttons */}
+        <section className="py-10">
+          <div className="mb-4 flex items-end justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Guides &amp; tips from the blog
+              </h2>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                Practical how-tos on image formats, PDFs, video and AI prompting.
+              </p>
+            </div>
+            <Link
+              href="/blog"
+              className="hidden shrink-0 text-sm font-semibold text-brand-600 hover:underline dark:text-brand-400 sm:inline"
+            >
+              View all articles →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {LATEST_POSTS.map((post) => (
+              <ArticleCard key={post.slug} post={post} />
+            ))}
+          </div>
+          <div className="mt-6 text-center sm:hidden">
+            <Link href="/blog" className="btn-secondary">
+              View all articles →
+            </Link>
+          </div>
+        </section>
 
         {/* SEO content */}
         <section className="prose-section mx-auto max-w-3xl py-12">
