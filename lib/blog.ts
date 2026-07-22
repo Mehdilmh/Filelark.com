@@ -14,6 +14,51 @@ export interface BlogPost {
  */
 export const POSTS: BlogPost[] = [
   {
+    slug: 'split-pdf-extract-pages',
+    title: 'How to Split a PDF or Extract Specific Pages (Free, No Upload)',
+    description:
+      'Pull exactly the pages you need out of any PDF — a range, a single page, or every page as its own file — privately in your browser.',
+    date: '2026-07-22',
+    readingMinutes: 5,
+    emoji: '✄',
+  },
+  {
+    slug: 'photos-to-pdf-scan-documents',
+    title: 'How to Turn Photos into a PDF (Scan Documents with Just Your Phone)',
+    description:
+      'Receipts, contracts, IDs, homework — combine phone photos into one clean PDF for free, fix sideways pages, and shrink it for upload portals.',
+    date: '2026-07-22',
+    readingMinutes: 6,
+    emoji: '📑',
+  },
+  {
+    slug: 'what-is-avif-how-to-open',
+    title: 'What Is an AVIF File — and How Do You Open or Convert It?',
+    description:
+      'AVIF images are showing up everywhere and half your apps refuse to open them. What the format is, why sites use it, and how to convert it in seconds.',
+    date: '2026-07-22',
+    readingMinutes: 5,
+    emoji: '🆕',
+  },
+  {
+    slug: 'social-media-image-sizes',
+    title: 'Social Media Image Sizes in 2026 (and How to Resize for Each)',
+    description:
+      'The exact pixel dimensions for Instagram, X, Facebook, LinkedIn, TikTok and YouTube — plus a free way to resize and compress every image to spec.',
+    date: '2026-07-22',
+    readingMinutes: 7,
+    emoji: '📐',
+  },
+  {
+    slug: 'trim-video-without-software',
+    title: 'How to Trim a Video Without Installing Anything (Lossless)',
+    description:
+      'Cut the exact section you need from any video in your browser — no watermark, no re-encoding, no quality loss, and files never leave your device.',
+    date: '2026-07-22',
+    readingMinutes: 5,
+    emoji: '✂️',
+  },
+  {
     slug: 'merge-pdf-files-free',
     title: 'How to Merge PDF Files for Free (in the Right Order, Without Uploading)',
     description:
