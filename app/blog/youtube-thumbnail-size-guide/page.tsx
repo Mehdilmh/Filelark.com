@@ -40,6 +40,18 @@ export default function Page() {
         brings it under the 2 MB cap without visible loss.
       </p>
 
+      <h2>What is the maximum file size for a YouTube thumbnail?</h2>
+      <p>
+        <strong>2 MB for videos</strong> (and 10 MB for podcast cover art) — upload
+        anything larger and YouTube Studio rejects it with an error. If your thumbnail
+        is over the limit, don&apos;t screenshot it smaller: run it through the{' '}
+        <Link href="/compress-image" className={A}>image compressor</Link> with a target
+        of 1.5 MB and it will fit with no visible quality loss. PNG thumbnails hit the
+        2 MB wall far more often than JPG — if yours does, convert it with{' '}
+        <Link href="/png-to-jpg" className={A}>PNG to JPG</Link> first; at 1280×720 the
+        difference is invisible in the feed.
+      </p>
+
       <h2>The five sizes YouTube stores</h2>
       <p>
         Every video&apos;s thumbnail exists on YouTube&apos;s servers at up to five fixed

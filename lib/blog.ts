@@ -14,6 +14,15 @@ export interface BlogPost {
  */
 export const POSTS: BlogPost[] = [
   {
+    slug: 'trim-video-from-dropbox',
+    title: 'How to Trim a Video From Dropbox (Free, No App Needed)',
+    description:
+      'Dropbox can’t cut videos on the free plan — but you don’t need an editor. Download, trim losslessly in your browser, and put the clip back in under two minutes.',
+    date: '2026-07-22',
+    readingMinutes: 4,
+    emoji: '📦',
+  },
+  {
     slug: 'split-pdf-extract-pages',
     title: 'How to Split a PDF or Extract Specific Pages (Free, No Upload)',
     description:
