@@ -19,6 +19,7 @@
     "@ffmpeg/ffmpeg": "^0.12.15",
     "@ffmpeg/util": "^0.12.2",
     "@jsquash/avif": "^2.0.0",
+    "@vercel/analytics": "^2.0.1",
     "browser-image-compression": "^2.0.2",
     "docx": "^9.7.1",
     "heic2any": "^0.0.4",
