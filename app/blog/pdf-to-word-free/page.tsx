@@ -54,6 +54,16 @@ export default function Page() {
         you want the original file, not a conversion.
       </p>
 
+      <h2>Is it really free — no sign-up, no credit card?</h2>
+      <p>
+        Yes. No account, no email, no card, no trial that flips to paid, no watermark,
+        and no daily conversion limit. That&apos;s possible precisely <em>because</em> the
+        conversion runs on your device: there are no server costs to recover, so there&apos;s
+        nothing to charge for. Services that convert on their servers have to meter free
+        use — the &quot;free&quot; converters that demand a card at download time are
+        recovering real compute bills. Different architecture, different economics.
+      </p>
+
       <h2>Only need part of the document?</h2>
       <p>
         Don&apos;t convert 60 pages to edit two. Use{' '}

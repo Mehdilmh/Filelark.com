@@ -19,6 +19,7 @@ const ImageConvertWidget = dynamic(() => import('./ImageConvertWidget'), { ssr: 
 const ImageResizeWidget = dynamic(() => import('./ImageResizeWidget'), { ssr: false, loading });
 const ImageCompressWidget = dynamic(() => import('./ImageCompressWidget'), { ssr: false, loading });
 const RemoveBackgroundWidget = dynamic(() => import('./RemoveBackgroundWidget'), { ssr: false, loading });
+const YoutubeThumbnailResizeWidget = dynamic(() => import('./YoutubeThumbnailResizeWidget'), { ssr: false, loading });
 const PdfToImagesWidget = dynamic(() => import('./PdfToImagesWidget'), { ssr: false, loading });
 const ImagesToPdfWidget = dynamic(() => import('./ImagesToPdfWidget'), { ssr: false, loading });
 const MergePdfWidget = dynamic(() => import('./MergePdfWidget'), { ssr: false, loading });
@@ -44,6 +45,8 @@ export default function ToolWidget({ tool }: { tool: Tool }) {
       return <ImageCompressWidget />;
     case 'bg-remove':
       return <RemoveBackgroundWidget />;
+    case 'youtube-thumbnail-resize':
+      return <YoutubeThumbnailResizeWidget />;
     case 'pdf-to-images':
       return <PdfToImagesWidget />;
     case 'images-to-pdf':

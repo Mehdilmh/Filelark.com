@@ -223,6 +223,59 @@ export function preservedFormat(file: File): EncodeFormat {
 }
 
 /**
+ * Make a valid YouTube thumbnail: exactly 1280×720 JPG under 2 MB.
+ * 'fill' crops the image to 16:9 (center crop); 'fit' letterboxes it.
+ */
+export async function makeYoutubeThumbnail(
+  file: File,
+  mode: 'fill' | 'fit' = 'fill',
+): Promise<ConvertResult> {
+  const W = 1280;
+  const H = 720;
+  const MAX_BYTES = 2 * 1024 * 1024;
+
+  const bitmap = await decodeImage(file);
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext('2d')!;
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, W, H);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
+    const scale =
+      mode === 'fill'
+        ? Math.max(W / bitmap.width, H / bitmap.height)
+        : Math.min(W / bitmap.width, H / bitmap.height);
+    const dw = bitmap.width * scale;
+    const dh = bitmap.height * scale;
+    ctx.drawImage(bitmap, (W - dw) / 2, (H - dh) / 2, dw, dh);
+
+    // 1280×720 JPG is almost always well under 2 MB; step down if not
+    let blob: Blob | null = null;
+    for (const q of [0.92, 0.85, 0.75, 0.65]) {
+      blob = await encodeCanvas(canvas, 'jpg', q);
+      if (blob.size <= MAX_BYTES) break;
+    }
+    if (!blob) throw new ConversionError('The thumbnail could not be encoded.');
+
+    return {
+      blob,
+      name:
+        replaceExtension(file.name, '').replace(/\.$/, '') + '-youtube-1280x720.jpg',
+      originalSize: file.size,
+      newSize: blob.size,
+      width: W,
+      height: H,
+    };
+  } finally {
+    bitmap.close();
+  }
+}
+
+/**
  * Compress an image, optionally to a target size in bytes.
  * Uses quality search first, then dimension reduction as a last resort.
  */

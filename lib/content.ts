@@ -291,6 +291,30 @@ export function toolContent(tool: Tool): ContentSection[] {
         },
       ];
 
+    case 'youtube-thumbnail-resize':
+      return [
+        {
+          heading: 'The exact size YouTube wants — in one click',
+          paragraphs: [
+            'YouTube thumbnails must be 1280×720 pixels (16:9), under 2 MB, ideally JPG. Miss any of those and YouTube Studio rejects the upload or your image arrives cropped in ways you didn&apos;t choose. This tool takes any image — a photo, a screenshot, a design export, even an iPhone HEIC — and produces a thumbnail that passes every requirement, instantly.',
+            'If your image isn&apos;t already 16:9, you choose what happens: crop-to-fill keeps the frame full (best for photos), or fit-with-bars preserves the whole image letterboxed on black (best for artwork you can&apos;t crop).',
+          ],
+        },
+        {
+          heading: 'Why 2 MB trips people up',
+          paragraphs: [
+            'Design tools love exporting thumbnails as PNG, and a detailed 1280×720 PNG regularly lands over the 2 MB cap. This tool always outputs an optimized JPG — visually identical at thumbnail sizes and reliably a fraction of the limit — and automatically steps the quality down in the rare case a JPG would still be too large.',
+            PRIVACY_PARAGRAPH,
+          ],
+        },
+        {
+          heading: 'More thumbnail workflows',
+          paragraphs: [
+            'Need a competitor&apos;s thumbnail for reference or your own back from an old video? The YouTube thumbnail downloader grabs any video&apos;s thumbnail in every quality. Designing from a photo? Remove the background first for that clean cut-out-subject look every big channel uses, then resize the finished design here. And our thumbnail size guide on the blog covers dimensions, safe areas and design tips in depth.',
+          ],
+        },
+      ];
+
     case 'pdf-to-word':
       return [
         {
@@ -723,6 +747,31 @@ export function toolFaqs(tool: Tool): Faq[] {
           question: 'What resolution is the output?',
           answer:
             'The same resolution as your original — the AI computes the cutout mask and applies it to your full-size image, so nothing is downscaled.',
+        },
+      ];
+
+    case 'youtube-thumbnail-resize':
+      return [
+        {
+          question: 'What size does a YouTube thumbnail need to be?',
+          answer:
+            '1280×720 pixels (16:9 aspect ratio), under 2 MB, in JPG, PNG or WebP. This tool outputs exactly that — 1280×720 as an optimized JPG comfortably under the limit.',
+        },
+        ...common,
+        {
+          question: 'My image isn’t 16:9 — what happens?',
+          answer:
+            'You choose: “Crop to fill” scales the image to cover the full frame and trims the overflow evenly from the edges (best for photos), while “Fit with black bars” shows the entire image letterboxed (best for artwork that must not be cropped).',
+        },
+        {
+          question: 'Why did YouTube reject my original thumbnail?',
+          answer:
+            'Almost always the 2 MB file-size limit — detailed PNG exports exceed it easily — or a non-16:9 shape. Both are fixed automatically here: the output is always 1280×720 and always under 2 MB.',
+        },
+        {
+          question: 'Does this work with iPhone (HEIC) photos?',
+          answer:
+            'Yes — HEIC decodes right in your browser like any other input format, and the output is a standard JPG that YouTube Studio accepts.',
         },
       ];
 

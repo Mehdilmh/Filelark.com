@@ -10,6 +10,7 @@ export type ToolKind =
   | 'image-resize'
   | 'image-compress'
   | 'bg-remove'
+  | 'youtube-thumbnail-resize'
   | 'pdf-to-images'
   | 'images-to-pdf'
   | 'merge-pdf'
@@ -121,6 +122,18 @@ const imageTools: Tool[] = [
     subtitle:
       'AI background removal that runs entirely on your device — get a transparent PNG in seconds.',
     short: 'AI background remover',
+  },
+  {
+    slug: 'youtube-thumbnail-resizer',
+    kind: 'youtube-thumbnail-resize',
+    category: 'Image Tools',
+    title: 'YouTube Thumbnail Resizer — 1280×720 Under 2 MB | FileLark',
+    description:
+      'Resize any image to the exact YouTube thumbnail size — 1280×720, JPG, under 2 MB — in one click. Free, in your browser, no upload, no watermark.',
+    h1: 'YouTube Thumbnail Resizer — 1280×720, Under 2 MB',
+    subtitle:
+      'Turn any image into a thumbnail YouTube will accept: exactly 1280×720 and under the 2 MB limit, in one click.',
+    short: 'Any image → valid YouTube thumbnail',
   },
 ];
 

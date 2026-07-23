@@ -14,6 +14,24 @@ export interface BlogPost {
  */
 export const POSTS: BlogPost[] = [
   {
+    slug: 'gif-to-png-explained',
+    title: 'GIF to PNG: How to Convert (and What Happens to the Animation)',
+    description:
+      'Converting GIF to PNG is instant and free — but a PNG can’t animate. What you get, what you lose, and the right format when you need moving images.',
+    date: '2026-07-23',
+    readingMinutes: 5,
+    emoji: '🎠',
+  },
+  {
+    slug: 'cloudconvert-alternative-no-upload',
+    title: 'CloudConvert Alternatives: When You Don’t Want to Upload Your Files',
+    description:
+      'CloudConvert is a fine service with a real limitation: your files go to their servers, with daily limits. Here’s when a browser-based converter is the better pick.',
+    date: '2026-07-23',
+    readingMinutes: 6,
+    emoji: '🔁',
+  },
+  {
     slug: 'trim-video-from-dropbox',
     title: 'How to Trim a Video From Dropbox (Free, No App Needed)',
     description:
