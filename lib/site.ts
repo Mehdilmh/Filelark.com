@@ -10,8 +10,13 @@ export const SITE_TAGLINE =
 /** Master switch for every <AdSlot />. Toggle via NEXT_PUBLIC_ADS_ENABLED=true */
 export const ADS_ENABLED = process.env.NEXT_PUBLIC_ADS_ENABLED === 'true';
 
-/** AdSense publisher ID (ca-pub-…). Setting it loads the AdSense script and ads.txt. */
-export const ADSENSE_PUBLISHER = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER || '';
+/**
+ * AdSense publisher ID (ca-pub-…). Baked in as the default (publisher IDs are
+ * public — they appear in every site's ads.txt and page source); the env var
+ * can still override it. Loads the AdSense script and activates /ads.txt.
+ */
+export const ADSENSE_PUBLISHER =
+  process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER || 'ca-pub-1099488297236173';
 
 /** Optional per-position AdSense ad-unit slot IDs (numbers from the AdSense UI). */
 export const ADSENSE_SLOTS = {
